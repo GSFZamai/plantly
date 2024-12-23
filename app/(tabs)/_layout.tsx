@@ -1,8 +1,17 @@
-import { Tabs } from 'expo-router';
+import { Redirect, Tabs } from 'expo-router';
 import { theme } from '@/theme';
 import { Entypo, Feather } from '@expo/vector-icons';
+import { useUserStore } from '@/userStore';
 
 export default function TabsLayout() {
+  const hasCompletedOnboarding = useUserStore(
+    (state) => state.hasFinishedOnboarding
+  );
+
+  if (!hasCompletedOnboarding) {
+    return <Redirect href="/onboarding" />;
+  }
+
   return (
     <Tabs
       screenOptions={{

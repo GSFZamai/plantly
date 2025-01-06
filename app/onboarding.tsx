@@ -1,7 +1,8 @@
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { theme } from '@/theme';
-import { useUserStore } from '@/userStore';
+import { useUserStore } from '@/store/userStore';
 import { router } from 'expo-router';
+import { PlantlyButton } from '@/components/PlantlyButton';
 
 export default function OnboardingScreen() {
   const toggleHasOnboarded = useUserStore((state) => state.toggleHasOnboarded);
@@ -14,7 +15,7 @@ export default function OnboardingScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Onboarding</Text>
-      <Button title="Onboard" onPress={handlePressButton} />
+      <PlantlyButton title="Onboard" onPress={handlePressButton} />
     </View>
   );
 }
